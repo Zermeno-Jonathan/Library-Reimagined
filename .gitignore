@@ -1,0 +1,20 @@
+# THIS IS FOR TEST PORPOSES ONLY
+
+# Dependencias
+node_modules/
+
+# Producción
+dist/
+build/
+
+# Secretos (API Keys)
+.env
+.env.local
+
+# Logs
+npm-debug.log*
+yarn-error.log*
+
+# Editor y Sistema
+.vscode/
+.DS_Store
