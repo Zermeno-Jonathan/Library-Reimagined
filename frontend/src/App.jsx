@@ -8,7 +8,10 @@ function App() {
         the fragment works as a placeholder parent element*/
         <>
             <div>
-                <p>Hello World</p>
+                <h2>Hello World, Hello React</h2>
+                <p>
+                    Found in <i>frontend/src/App.jsx</i>
+                </p>
             </div>
         </>
     );
