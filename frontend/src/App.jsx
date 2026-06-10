@@ -1,4 +1,7 @@
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './home';
+import Test1 from './test1';
 
 function App() {
     return (
@@ -6,14 +9,13 @@ function App() {
         elements without adding an extra DOM node
         it is used by placing the code inside a pair of empty tags (<></>)
         the fragment works as a placeholder parent element*/
-        <>
-            <div>
-                <h2>Hello World, Hello React</h2>
-                <p>
-                    Found in <i>frontend/src/App.jsx</i>
-                </p>
-            </div>
-        </>
+
+        <BrowserRouter>
+            <Routes>
+                <Route path="/home" element={<Home />} />
+                <Route path="/test1" element={<Test1 />} />
+            </Routes>
+        </BrowserRouter>
     );
 }
 
