@@ -4,6 +4,7 @@ function Home() {
     return (
         <div className="home">
             <p className={styles.paragHome}>Home</p>
+            <p>Bienvenidos</p>
         </div>
     );
 }
