@@ -1,6 +1,14 @@
 // import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './home';
+// Pages
+import Home from './pages/Home/Home';
+import Books from './pages/Books/Books';
+import Loans from './pages/Loans/Loans';
+import Login from './pages/Login/Login';
+import MenuAdmin from './pages/MenuAdmin/MenuAdmin';
+import MenuUser from './pages/MenuUser/MenuUser';
+import Queries from './pages/Queries/Queries';
+import Users from './pages/Users/Users';
 // import Test1 from './test1';
 
 function App() {
@@ -12,8 +20,15 @@ function App() {
 
         <BrowserRouter>
             <Routes>
-                <Route path="/home" element={<Home />} />
-                {/* <Route path="/test1" element={<Test1 />} /> */}
+                {/* Pages */}
+                <Route path="/Home" element={<Home />} />
+                <Route path="/Books" element={<Books />} />
+                <Route path="/Loans" element={<Loans />} />
+                <Route path="/Login" element={<Login />} />
+                <Route path="/MenuAdmin" element={<MenuAdmin />} />
+                <Route path="/MenuUser" element={<MenuUser />} />
+                <Route path="/Queries" element={<Queries />} />
+                <Route path="/Users" element={<Users />} />
             </Routes>
         </BrowserRouter>
     );
