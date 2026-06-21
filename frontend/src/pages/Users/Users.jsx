@@ -4,7 +4,6 @@ function Users() {
     return (
         <div className="b">
             <p className={styles.b}>Users</p>
-            <p>Bienvenidos</p>
         </div>
     );
 }

@@ -1,6 +1,13 @@
+html,
+body,
+#root {
+    height: 100%;
+}
+
 * {
     margin: 0;
-    padding: 5px;
+    padding: .25rem;
+    box-sizing: border-box;
 }
 
 :root {
@@ -21,6 +28,7 @@ h3,
 h4 {
     font-family: var(--font-heading);
 }
+
 /* :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

@@ -2,9 +2,8 @@ import styles from './Loans.module.css';
 
 function Loans() {
     return (
-        <div className="l">
+        <div className="loans">
             <p className={styles.l}>Loans</p>
-            <p>Bienvenidos</p>
         </div>
     );
 }

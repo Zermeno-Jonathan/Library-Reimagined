@@ -4,7 +4,6 @@ function MenuAdmin() {
     return (
         <div className="MA">
             <p className={styles.MA}>MenuAdmin</p>
-            <p>Bienvenidos</p>
         </div>
     );
 }

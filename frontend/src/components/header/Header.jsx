@@ -1,9 +1,10 @@
 import styles from './Header.module.css';
+import { Link } from 'react-router-dom';
 
 function Header() {
     return (
         <div className={styles.header}>
-            <a href="/">
+            <Link to="/">
                 <img
                     className={styles.logo}
                     src="/books_icon.png"
@@ -11,7 +12,7 @@ function Header() {
                     height={40}
                     width={40}
                 />
-            </a>
+            </Link>
             <h2 className={styles.title}>Library Reimagined</h2>
         </div>
     );

@@ -4,7 +4,6 @@ function MenuUser() {
     return (
         <div className="b">
             <p className={styles.b}>MenuUser</p>
-            <p>Bienvenidos</p>
         </div>
     );
 }
