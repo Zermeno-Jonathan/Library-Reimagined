@@ -23,8 +23,8 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/books" element={<Books />} />
                     <Route path="/loans" element={<Loans />} />
-                    <Route path="/menu-admin" element={<MenuAdmin />} />
-                    <Route path="/menu-user" element={<MenuUser />} />
+                    <Route path="/menuadmin" element={<MenuAdmin />} />
+                    <Route path="/menuuser" element={<MenuUser />} />
                     <Route path="/queries" element={<Queries />} />
                     <Route path="/users" element={<Users />} />
                 </Route>

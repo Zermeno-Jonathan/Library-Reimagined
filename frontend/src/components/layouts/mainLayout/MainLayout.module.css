@@ -5,3 +5,14 @@
     background-color: #fff;
     border-bottom: 1px solid #ddd;
 }
+
+.mainLayout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%; /* altura mínima de la pantalla */
+    gap: 1rem;
+}
+
+.content {
+    flex: 1; /* toma todo el espacio disponible */
+}

@@ -6,14 +6,16 @@ import styles from './MainLayout.module.css';
 
 function MainLayout() {
     return (
-        <>
+        <div className={styles.mainLayout}>
             <div className={styles.topBar}>
                 <Header />
                 <NavBar />
             </div>
-            <Outlet /> {/* aquí se renderizan las páginas según la ruta */}
+            <div className={styles.content}>
+                <Outlet />
+            </div>
             <Footer />
-        </>
+        </div>
     );
 }
 
