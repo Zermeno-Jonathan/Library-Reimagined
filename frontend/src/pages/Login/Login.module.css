@@ -1,5 +1,5 @@
 .loginTitle {
-    background-color: #e8d0ac;
+    background-color: var(--bg-color-primary);
     border-radius: 0.5rem;
     text-align: center;
     font-weight: 600;
@@ -29,7 +29,7 @@
 }
 
 .cancellBtn:hover {
-    background-color: #e8d0ac;
+    background-color: var(--bg-color-primary);
 }
 
 .cancellBtn:focus {
