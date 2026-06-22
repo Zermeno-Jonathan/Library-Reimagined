@@ -6,13 +6,14 @@ body,
 
 * {
     margin: 0;
-    padding: .25rem;
+    padding: 0.25rem;
     box-sizing: border-box;
 }
 
 :root {
-    --color-primary: #3b82f6;
-    --color-text: #1f2937;
+    --bg-color-primary: #e8d0ac;
+    --bg-color-secondary: #d0b387;
+    --color-text: #000000;
     --font-heading: 'Lora', serif;
     --font-body: 'Inter', sans-serif;
 }
