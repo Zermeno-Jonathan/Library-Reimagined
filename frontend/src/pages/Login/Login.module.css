@@ -1,3 +1,12 @@
+.divTitle {
+    padding-bottom: 2rem;
+}
+
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+}
+
 .loginTitle {
     background-color: var(--bg-color-primary);
     border-radius: 0.5rem;
@@ -5,13 +14,12 @@
     font-weight: 600;
 }
 
-.cancellBtn {
+.loginButton {
     background-color: #ffffff;
-    border: 1;
     border-color: #d0b387;
     border-radius: 0.5rem;
     box-sizing: border-box;
-    color: #000000;
+    color: var(--color-text-2);
     font-size: 0.875rem;
     font-weight: 500;
     line-height: 1.25rem;
@@ -26,17 +34,80 @@
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+
+    align-self: flex-end;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    margin-right: 4px;
 }
 
-.cancellBtn:hover {
+.loginButton:hover {
     background-color: var(--bg-color-primary);
+    color: var(--color-text);
 }
 
-.cancellBtn:focus {
+.loginButton:focus {
     outline: 2px solid transparent;
     outline-offset: 2px;
 }
 
-.cancellBtn:focus-visible {
+.loginButton:focus-visible {
     box-shadow: none;
+}
+
+.formGroup {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.input {
+    width: 100%;
+    padding: 0.75rem 0.5rem;
+    border: 1px solid #ddd;
+    font-size: 15px;
+    font-weight: 400;
+    outline: none;
+    border-radius: 0.25rem;
+}
+
+.label {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.5rem;
+    color: var(--color-text-2);
+    transition: all 0.2s ease;
+    pointer-events: none;
+    background: white;
+    font-size: 14px;
+}
+
+/* When input is focused */
+.input:focus ~ .label,
+.input:not(:placeholder-shown) ~ .label {
+    top: -0.5rem;
+    font-size: 0.75rem;
+    color: var(--color-text-3);
+}
+
+/* link styling */
+.loginContainer a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 0.5rem;
+    color: var(--color-text-2);
+    display: inline;
+}
+
+.loginContainer a:hover {
+    color: var(--color-text);
+    font-size: 14px;
+    border-radius: 0.5rem;
+    text-decoration: underline var(--color-link-underline);
+}
+
+.linksContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
 }
