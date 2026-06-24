@@ -1,18 +1,18 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Layouts
-import MainLayout from './components/layouts/mainLayout/MainLayout'
-import AuthLayout from './components/layouts/AuthLayout/AuthLayout'
+import MainLayout from './components/layouts/mainLayout/MainLayout';
+import AuthLayout from './components/layouts/AuthLayout/AuthLayout';
 
 // Pages
-import Home from './pages/Home/Home'
-import Books from './pages/Books/Books'
-import Loans from './pages/Loans/Loans'
-import Login from './pages/Login/Login'
-import MenuAdmin from './pages/MenuAdmin/MenuAdmin'
-import MenuUser from './pages/MenuUser/MenuUser'
-import Queries from './pages/Queries/Queries'
-import Users from './pages/Users/Users'
+import Home from './pages/Home/Home';
+import Books from './pages/Books/Books';
+import Loans from './pages/Loans/Loans';
+import Login from './pages/Login/Login';
+import MenuAdmin from './pages/MenuAdmin/MenuAdmin';
+import MenuUser from './pages/MenuUser/MenuUser';
+import Queries from './pages/Queries/Queries';
+import Users from './pages/Users/Users';
 
 function App() {
     return (
@@ -35,7 +35,7 @@ function App() {
                 </Route>
             </Routes>
         </BrowserRouter>
-    )
+    );
 }
 
-export default App
+export default App;
