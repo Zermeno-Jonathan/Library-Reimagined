@@ -24,6 +24,9 @@ function NavBar() {
                     <Link to="/Queries">Queries</Link>
                 </li>
                 <li>
+                    <Link to="/Users">Users</Link>
+                </li>
+                <li>
                     <a className={styles.logButton} href="/Login">
                         Login
                     </a>
