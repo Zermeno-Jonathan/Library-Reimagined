@@ -1,0 +1,42 @@
+.notFound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10rem;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 3rem;
+    border: 3px solid #d0b387;
+    padding: 5rem;
+    border-radius: 8px;
+    max-width: fit-content;
+}
+
+.notFoundTitle {
+    font-size: 3.5rem;
+    background-color: var(--bg-color-primary);
+    border-radius: 0.5rem;
+}
+
+.notFoundContent {
+    text-align: center;
+}
+
+/* link styling */
+.notFound a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 0.5rem;
+    color: var(--color-text);
+    background-color: var(--bg-color-primary);
+    display: inline;
+}
+
+.notFound a:hover {
+    color: var(--color-text);
+    font-size: 14px;
+    border-radius: 0.5rem;
+    background-color: var(--bg-color-secondary);
+}
