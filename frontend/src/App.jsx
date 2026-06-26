@@ -14,6 +14,7 @@ import MenuAdmin from './pages/MenuAdmin/MenuAdmin';
 import MenuUser from './pages/MenuUser/MenuUser';
 import Queries from './pages/Queries/Queries';
 import Users from './pages/Users/Users';
+import NotFound from './pages/NotFound/NotFound';
 
 function App() {
     return (
@@ -35,6 +36,9 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                 </Route>
+
+                {/* Catch-all — Any other route that doesn't match a defined route */}
+                <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>
     );
