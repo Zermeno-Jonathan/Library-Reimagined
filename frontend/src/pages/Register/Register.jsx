@@ -1,16 +1,18 @@
 // import { useNavigate, Link } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import FormInput from '../../components/FormInput/FormInput';
+import supabase from '../../config/supabaseClient';
 import styles from './Register.module.css';
 
 function Register() {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
 
-    const handleRegister = (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
 
         setEmailError('');
@@ -29,6 +31,22 @@ function Register() {
         if (!password) {
             setPasswordError('Password is required');
             return;
+        }
+
+        // Register the user with the provided data in Supabase
+        const { data, error } = await supabase.auth.signUp({
+            email,
+            password,
+        });
+
+        if (error) {
+            setEmailError('Error creating account: ' + error.message);
+            return;
+        }
+
+        if (data) {
+            console.log('Account created successfully:', data);
+            navigate('/login');
         }
 
         console.log('Form válido:', { email, password });
