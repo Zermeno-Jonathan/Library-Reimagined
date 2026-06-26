@@ -9,6 +9,7 @@ import Home from './pages/Home/Home';
 import Books from './pages/Books/Books';
 import Loans from './pages/Loans/Loans';
 import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
 import MenuAdmin from './pages/MenuAdmin/MenuAdmin';
 import MenuUser from './pages/MenuUser/MenuUser';
 import Queries from './pages/Queries/Queries';
@@ -32,6 +33,7 @@ function App() {
                 {/* Páginas de autenticación sin Header/Navbar/Footer */}
                 <Route element={<AuthLayout />}>
                     <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
                 </Route>
             </Routes>
         </BrowserRouter>

@@ -2,6 +2,7 @@ html,
 body,
 #root {
     height: 100%;
+    background-color: #f3f4f6;
 }
 
 * {
@@ -19,7 +20,6 @@ body,
     --color-link-underline: #d0b387;
     --font-heading: 'Lora', serif;
     --font-body: 'Inter', sans-serif;
-
 }
 
 body {

@@ -1,0 +1,42 @@
+.formGroup {
+    position: relative;
+    margin-bottom: 1rem;
+    min-height: 4.5rem;
+}
+
+.input {
+    width: 100%;
+    padding: 0.75rem 0.5rem;
+    border: 1px solid #ddd;
+    font-size: 15px;
+    font-weight: 400;
+    outline: none;
+    border-radius: 0.25rem;
+}
+
+.label {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.5rem;
+    color: var(--color-text-2);
+    transition: all 0.2s ease;
+    pointer-events: none;
+    background: white;
+    font-size: 14px;
+}
+
+/* When input is focused */
+.input:focus ~ .label,
+.input:not(:placeholder-shown) ~ .label {
+    top: -0.5rem;
+    font-size: 0.75rem;
+    color: var(--color-text-3);
+}
+
+.error {
+    color: rgb(209, 0, 0);
+    font-size: 0.8rem;
+    margin-top: 0.15rem;
+    display: block;
+    height: 1rem;
+}
