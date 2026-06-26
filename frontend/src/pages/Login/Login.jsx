@@ -1,50 +1,74 @@
-import { useNavigate, Link } from 'react-router-dom';
+// import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import FormInput from '../../components/FormInput/FormInput';
 import styles from './Login.module.css';
 
 function Login() {
-    const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [emailError, setEmailError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
 
-    const handleLogin = () => {
-        navigate('/Dashboard'); //Takes user to their specific dashboard page after login
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        setEmailError('');
+        setPasswordError('');
+
+        if (!email) {
+            setEmailError('Email is required');
+            return;
+        }
+
+        if (!email.includes('@')) {
+            setEmailError('Email address must be valid');
+            return;
+        }
+
+        if (!password) {
+            setPasswordError('Password is required');
+            return;
+        }
+
+        console.log('Form válido:', { email, password });
     };
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <div className={styles.loginContainer}>
                 <div className={styles.divTitle}>
                     <h3 className={styles.loginTitle}>Access your account</h3>
                 </div>
 
-                <div className={styles.formGroup}>
-                    <input
+                <form onSubmit={handleSubmit}>
+                    <FormInput
                         id="email"
+                        label="Enter your email"
                         type="email"
-                        placeholder=" "
-                        className={styles.input}
+                        value={email}
+                        onChange={(e) => {
+                            setEmail(e.target.value);
+                            setEmailError(''); // <= limpia el error cuando escribe
+                        }}
+                        error={emailError}
                     />
-                    <label htmlFor="email" className={styles.label}>
-                        Enter your email address
-                    </label>
-                </div>
 
-                <div className={styles.formGroup}>
-                    <input
+                    <FormInput
                         id="password"
+                        label="Enter your password"
                         type="password"
-                        placeholder=" "
-                        className={styles.input}
+                        value={password}
+                        onChange={(e) => {
+                            setPassword(e.target.value);
+                            setPasswordError(''); // <= limpia el error cuando escribe
+                        }}
+                        error={passwordError}
                     />
-                    <label htmlFor="password" className={styles.label}>
-                        Enter your password
-                    </label>
-                </div>
+                </form>
 
                 {/* Button to login */}
-                <button
-                    className={styles.loginButton}
-                    type="button"
-                    onClick={handleLogin}
-                >
+                <button className={styles.loginButton} type="submit">
                     Login
                 </button>
 
@@ -53,7 +77,7 @@ function Login() {
                     <Link to="/">Go back</Link>
 
                     {/* Link to Register form */}
-                    <Link to="/Register">Don't have an account?</Link>
+                    <Link to="/register">Don't have an account? Register</Link>
                 </div>
             </div>
         </form>

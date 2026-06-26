@@ -5,7 +5,7 @@ function AuthLayout() {
     return (
         <div className={styles.container}>
             <div className={styles.card}>
-                <Outlet /> {/* aquí va Login */}
+                <Outlet /> {/* aquí va Login & Register */}
             </div>
         </div>
     );

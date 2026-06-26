@@ -2,19 +2,19 @@
     padding-bottom: 2rem;
 }
 
-.loginContainer {
+.registerContainer {
     display: flex;
     flex-direction: column;
 }
 
-.loginTitle {
+.registerTitle {
     background-color: var(--bg-color-primary);
     border-radius: 0.5rem;
     text-align: center;
     font-weight: 600;
 }
 
-.loginButton {
+.registerButton {
     background-color: #ffffff;
     border-color: #d0b387;
     border-radius: 0.5rem;
@@ -41,22 +41,22 @@
     margin-right: 4px;
 }
 
-.loginButton:hover {
+.registerButton:hover {
     background-color: var(--bg-color-primary);
     color: var(--color-text);
 }
 
-.loginButton:focus {
+.registerButton:focus {
     outline: 2px solid transparent;
     outline-offset: 2px;
 }
 
-.loginButton:focus-visible {
+.registerButton:focus-visible {
     box-shadow: none;
 }
 
 /* link styling */
-.loginContainer a {
+.registerContainer a {
     color: var(--color-text);
     text-decoration: none;
     font-size: 14px;
@@ -65,7 +65,7 @@
     display: inline;
 }
 
-.loginContainer a:hover {
+.registerContainer a:hover {
     color: var(--color-text);
     font-size: 14px;
     border-radius: 0.5rem;
