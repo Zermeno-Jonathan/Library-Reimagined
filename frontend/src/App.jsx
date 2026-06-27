@@ -4,6 +4,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainLayout from './components/layouts/mainLayout/MainLayout';
 import AuthLayout from './components/layouts/AuthLayout/AuthLayout';
 
+// Components
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+
 // Pages
 import Home from './pages/Home/Home';
 import Books from './pages/Books/Books';
@@ -20,18 +23,29 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                {/* Páginas con Header, Navbar, Footer */}
+                {/* Pages */}
                 <Route element={<MainLayout />}>
+                    {/* Public routes */}
                     <Route path="/" element={<Home />} />
                     <Route path="/books" element={<Books />} />
                     <Route path="/loans" element={<Loans />} />
-                    <Route path="/menuadmin" element={<MenuAdmin />} />
-                    <Route path="/menuuser" element={<MenuUser />} />
                     <Route path="/queries" element={<Queries />} />
-                    <Route path="/users" element={<Users />} />
+
+                    {/* Protected routes Admin*/}
+                    <Route
+                        element={<ProtectedRoute allowedRoles={['admin']} />}
+                    >
+                        <Route path="/menuadmin" element={<MenuAdmin />} />
+                        <Route path="/users" element={<Users />} />
+                    </Route>
+
+                    {/* Protected routes User*/}
+                    <Route element={<ProtectedRoute allowedRoles={['user']} />}>
+                        <Route path="/menuuser" element={<MenuUser />} />
+                    </Route>
                 </Route>
 
-                {/* Páginas de autenticación sin Header/Navbar/Footer */}
+                {/* Auth pages */}
                 <Route element={<AuthLayout />}>
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
