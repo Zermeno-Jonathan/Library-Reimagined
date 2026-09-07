@@ -58,7 +58,7 @@
 
 /* link styling */
 .loginContainer a {
-    color: var(--color-text);
+    /* color: var(--color-text); */
     text-decoration: none;
     font-size: 14px;
     border-radius: 0.5rem;
