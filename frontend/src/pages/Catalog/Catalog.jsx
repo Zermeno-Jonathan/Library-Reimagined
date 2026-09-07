@@ -77,13 +77,17 @@ function Catalog() {
 
             if (error) {
                 console.error('Error requesting loan:', error);
-                const msg = error.message?.includes('limit reached')
-                    ? 'limit'
-                    : error.message?.includes('already have')
-                      ? 'duplicate'
-                      : 'error';
-                setRequestStatus((prev) => ({ ...prev, [book.id]: msg }));
-                return;
+                if (error.message?.includes('limit reached')) {
+                    setBooks((prev) =>
+                        prev.map((b) => ({ ...b, _limitReached: true })),
+                    );
+                } else {
+                    const msg = error.message?.includes('already have')
+                        ? 'duplicate'
+                        : 'error';
+                    setRequestStatus((prev) => ({ ...prev, [book.id]: msg }));
+                }
+                return; // ← este es el que faltaba
             }
 
             // Decrementa stock localmente
@@ -98,7 +102,9 @@ function Catalog() {
             setTimeout(() => {
                 setRequestStatus((prev) => {
                     const updated = { ...prev };
-                    delete updated[book.id];
+                    if (updated[book.id] === 'success') {
+                        delete updated[book.id];
+                    }
                     return updated;
                 });
             }, 2000);
@@ -112,9 +118,9 @@ function Catalog() {
         const status = requestStatus[book.id];
         if (status === 'loading') return 'Requesting...';
         if (status === 'success') return 'Requested!';
-        if (status === 'limit') return 'Loan limit reached';
         if (status === 'duplicate') return 'Already borrowed';
         if (status === 'error') return 'Try again';
+        if (book._limitReached) return 'Loan limit reached';
         if (book.stock <= 0) return 'Unavailable';
         return 'Request Loan';
     };
@@ -186,6 +192,7 @@ function Catalog() {
                                     <button
                                         className={`${styles.loanButton} ${
                                             book.stock <= 0 ||
+                                            book._limitReached ||
                                             requestStatus[book.id] === 'loading'
                                                 ? styles.loanButtonDisabled
                                                 : ''
@@ -193,6 +200,7 @@ function Catalog() {
                                         onClick={() => handleRequestLoan(book)}
                                         disabled={
                                             book.stock <= 0 ||
+                                            book._limitReached ||
                                             requestStatus[book.id] === 'loading'
                                         }
                                     >
