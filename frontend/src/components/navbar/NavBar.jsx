@@ -25,9 +25,6 @@ function NavBar() {
                 {userRole === 'user' && (
                     <>
                         <li>
-                            <Link to="/loans">Loans</Link>
-                        </li>
-                        <li>
                             <Link to="/menuUser">Menu User</Link>
                         </li>
                     </>

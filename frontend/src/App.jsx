@@ -20,6 +20,8 @@ import MenuUser from './pages/MenuUser/MenuUser';
 import Queries from './pages/Queries/Queries';
 import Users from './pages/Users/Users';
 import NotFound from './pages/NotFound/NotFound';
+import Profile from './pages/Profile/Profile';
+import MyLoans from './pages/MyLoans/MyLoans';
 
 function App() {
     return (
@@ -46,6 +48,8 @@ function App() {
                     <Route element={<ProtectedRoute allowedRoles={['user']} />}>
                         <Route path="/loans" element={<Loans />} />
                         <Route path="/menuuser" element={<MenuUser />} />
+                        <Route path="/profile" element={<Profile />} />
+                        <Route path="/myloans" element={<MyLoans />} />
                     </Route>
                 </Route>
 
