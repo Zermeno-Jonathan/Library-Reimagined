@@ -1,0 +1,60 @@
+.pageWraper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.menuAdminContainer {
+    border: 1px solid #d0b387;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f3f4f6;
+    padding: 2rem;
+    width: 50%;
+    max-width: 400px;
+}
+
+.menuAdminLinks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    gap: 1rem;
+    width: 75%;
+}
+
+.menuAdminLink {
+    text-decoration: none;
+    color: var(--color-text);
+    border: 1px solid #d0b387;
+    display: flex;
+    justify-content: center;
+    border-radius: 0.5rem;
+}
+
+.menuAdminLink:hover {
+    /* border-radius: 0.25rem; */
+    background-color: var(--bg-color-primary);
+    /* color: var(--bg-color-secondary); */
+}
+
+.pageTitle {
+    background-color: var(--bg-color-primary);
+    text-align: center;
+    border-radius: 0.5rem;
+    border: 1px solid #d0b387;
+}
+
+.linkDescriptions {
+    font-size: 14px;
+    font-style: oblique;
+    color: var(--color-text-2);
+}
