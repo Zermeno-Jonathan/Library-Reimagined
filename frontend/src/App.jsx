@@ -10,7 +10,9 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 // Pages
 import Home from './pages/Home/Home';
 import Books from './pages/Books/Books';
+import Catalog from './pages/Catalog/Catalog';
 import Loans from './pages/Loans/Loans';
+import AdminLoans from './pages/AdminLoans/AdminLoans';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import MenuAdmin from './pages/MenuAdmin/MenuAdmin';
@@ -27,20 +29,22 @@ function App() {
                 <Route element={<MainLayout />}>
                     {/* Public routes */}
                     <Route path="/" element={<Home />} />
-                    <Route path="/books" element={<Books />} />
-                    <Route path="/loans" element={<Loans />} />
+                    <Route path="/catalog" element={<Catalog />} />
                     <Route path="/queries" element={<Queries />} />
 
                     {/* Protected routes Admin*/}
                     <Route
                         element={<ProtectedRoute allowedRoles={['admin']} />}
                     >
+                        <Route path="/adminloans" element={<AdminLoans />} />
+                        <Route path="/books" element={<Books />} />
                         <Route path="/menuadmin" element={<MenuAdmin />} />
                         <Route path="/users" element={<Users />} />
                     </Route>
 
                     {/* Protected routes User*/}
                     <Route element={<ProtectedRoute allowedRoles={['user']} />}>
+                        <Route path="/loans" element={<Loans />} />
                         <Route path="/menuuser" element={<MenuUser />} />
                     </Route>
                 </Route>
