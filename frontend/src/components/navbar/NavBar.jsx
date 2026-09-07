@@ -18,20 +18,19 @@ function NavBar() {
                     <Link to="/">Home</Link>
                 </li>
                 <li>
-                    <Link to="/books">Books</Link>
-                </li>
-                <li>
-                    <Link to="/loans">Loans</Link>
-                </li>
-                <li>
-                    <Link to="/queries">Queries</Link>
+                    <Link to="/catalog">Catalog</Link>
                 </li>
 
                 {/* links only accessible if userRole is 'user' show this links */}
                 {userRole === 'user' && (
-                    <li>
-                        <Link to="/menuUser">Menu User</Link>
-                    </li>
+                    <>
+                        <li>
+                            <Link to="/loans">Loans</Link>
+                        </li>
+                        <li>
+                            <Link to="/menuUser">Menu User</Link>
+                        </li>
+                    </>
                 )}
 
                 {/* links only accessible if userRole is 'admin' show this links */}
@@ -40,9 +39,18 @@ function NavBar() {
                         <li>
                             <Link to="/menuAdmin">Menu Admin</Link>
                         </li>
+                        {/* <li>
+                            <Link to="/adminloans">Admin Loans</Link>
+                        </li>
+                        <li>
+                            <Link to="/books">Books</Link>
+                        </li>
                         <li>
                             <Link to="/users">Users</Link>
                         </li>
+                        <li>
+                            <Link to="/queries">Queries</Link>
+                        </li> */}
                     </>
                 )}
 
