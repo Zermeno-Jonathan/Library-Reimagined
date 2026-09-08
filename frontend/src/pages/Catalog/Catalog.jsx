@@ -8,24 +8,30 @@ function Catalog() {
     const [search, setSearch] = useState('');
     const [userRole, setUserRole] = useState(null);
     const [requestStatus, setRequestStatus] = useState({});
+    const [categories, setCategories] = useState([]);
+    const [activeCategory, setActiveCategory] = useState('All');
 
     useEffect(() => {
         const role = localStorage.getItem('userRole');
         setUserRole(role);
     }, []);
 
-    const fetchBooks = useCallback(async (query = '') => {
+    const fetchBooks = useCallback(async (query = '', category = 'All') => {
         setLoading(true);
         try {
             let request = supabase
                 .from('books')
-                .select('id, title, author, year, isbn, stock')
+                .select('id, title, author, year, isbn, stock, category')
                 .order('title', { ascending: true });
 
             if (query.trim()) {
                 request = request.or(
                     `title.ilike.%${query}%,author.ilike.%${query}%`,
                 );
+            }
+
+            if (category !== 'All') {
+                request = request.eq('category', category);
             }
 
             const { data, error } = await request;
@@ -35,7 +41,22 @@ function Catalog() {
                 return;
             }
 
-            setBooks(data || []);
+            const fetched = data || [];
+            setBooks(fetched);
+
+            // Extrae categorías únicas para el select
+            if (category === 'All' && !query.trim()) {
+                const unique = [
+                    'All',
+                    ...new Set(
+                        fetched
+                            .map((b) => b.category)
+                            .filter(Boolean)
+                            .sort(),
+                    ),
+                ];
+                setCategories(unique);
+            }
         } finally {
             setLoading(false);
         }
@@ -43,17 +64,17 @@ function Catalog() {
 
     // Initial fetch
     useEffect(() => {
-        fetchBooks();
-    }, [fetchBooks]);
+        fetchBooks('', activeCategory);
+    }, [fetchBooks, activeCategory]);
 
     // Debounced search
     useEffect(() => {
         const timer = setTimeout(() => {
-            fetchBooks(search);
+            fetchBooks(search, activeCategory);
         }, 350);
 
         return () => clearTimeout(timer);
-    }, [search, fetchBooks]);
+    }, [search, activeCategory, fetchBooks]);
 
     const handleRequestLoan = async (book) => {
         if (book.stock <= 0) return;
@@ -87,7 +108,7 @@ function Catalog() {
                         : 'error';
                     setRequestStatus((prev) => ({ ...prev, [book.id]: msg }));
                 }
-                return; // ← este es el que faltaba
+                return;
             }
 
             // Decrementa stock localmente
@@ -134,7 +155,8 @@ function Catalog() {
                 </p>
             </div>
 
-            <div className={styles.searchWrapper}>
+            {/* Search + Category row */}
+            <div className={styles.controlsRow}>
                 <input
                     className={styles.searchInput}
                     type="search"
@@ -143,6 +165,20 @@ function Catalog() {
                     onChange={(e) => setSearch(e.target.value)}
                     aria-label="Search books"
                 />
+                {categories.length > 1 && (
+                    <select
+                        className={styles.categorySelect}
+                        value={activeCategory}
+                        onChange={(e) => setActiveCategory(e.target.value)}
+                        aria-label="Filter by category"
+                    >
+                        {categories.map((cat) => (
+                            <option key={cat} value={cat}>
+                                {cat}
+                            </option>
+                        ))}
+                    </select>
+                )}
             </div>
 
             {loading ? (
@@ -170,6 +206,11 @@ function Catalog() {
                                 <p className={styles.bookYear}>
                                     {new Date(book.year).getFullYear()}
                                 </p>
+                                {book.category && (
+                                    <span className={styles.categoryBadge}>
+                                        {book.category}
+                                    </span>
+                                )}
                                 <span className={styles.isbnBadge}>
                                     ISBN {book.isbn}
                                 </span>
