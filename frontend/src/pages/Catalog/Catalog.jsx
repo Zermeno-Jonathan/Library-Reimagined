@@ -62,6 +62,24 @@ function Catalog() {
         }
     }, []);
 
+    const logQuery = useCallback(async (query) => {
+        if (!query.trim()) return;
+
+        try {
+            const {
+                data: { user },
+            } = await supabase.auth.getUser();
+            if (!user) return;
+
+            await supabase.from('queries').insert({
+                user_id: user.id,
+                query_text: query.trim(),
+            });
+        } catch (error) {
+            console.error('Error logging query:', error);
+        }
+    }, []);
+
     // Initial fetch
     useEffect(() => {
         fetchBooks('', activeCategory);
@@ -69,12 +87,22 @@ function Catalog() {
 
     // Debounced search
     useEffect(() => {
-        const timer = setTimeout(() => {
+        const searchTimer = setTimeout(() => {
             fetchBooks(search, activeCategory);
         }, 350);
 
-        return () => clearTimeout(timer);
-    }, [search, activeCategory, fetchBooks]);
+        // Log solo si el usuario pausa más de 1.5s y tiene al menos 3 caracteres
+        const logTimer = setTimeout(() => {
+            if (search.trim().length >= 3) {
+                logQuery(search);
+            }
+        }, 1500);
+
+        return () => {
+            clearTimeout(searchTimer);
+            clearTimeout(logTimer);
+        };
+    }, [search, activeCategory, fetchBooks, logQuery]);
 
     const handleRequestLoan = async (book) => {
         if (book.stock <= 0) return;
