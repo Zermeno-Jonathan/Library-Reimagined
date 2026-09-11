@@ -8,13 +8,6 @@ function Home() {
     const [totalBooks, setTotalBooks] = useState(0);
     const [loading, setLoading] = useState(true);
 
-    // temporal logout
-    const handleLogout = (e) => {
-        e.preventDefault();
-        localStorage.removeItem('userRole');
-        window.location.href = '/';
-    };
-
     useEffect(() => {
         const fetchBooksCount = async () => {
             try {
@@ -70,13 +63,6 @@ function Home() {
                     Explore Catalog
                 </button>
             </section>
-
-            {/* Temporary Logout */}
-            <p className={styles.tempLogout}>
-                <a href="#" onClick={handleLogout}>
-                    Logout (temp)
-                </a>
-            </p>
         </main>
     );
 }

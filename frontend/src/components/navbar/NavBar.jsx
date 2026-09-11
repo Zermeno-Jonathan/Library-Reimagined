@@ -1,19 +1,20 @@
-import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import styles from './NavBar.module.css';
 
 function NavBar() {
-    const [userRole, setUserRole] = useState(null);
+    const { userRole, logout } = useAuth();
+    const navigate = useNavigate();
 
-    useEffect(() => {
-        const role = localStorage.getItem('userRole');
-        setUserRole(role);
-    }, []);
+    const handleLogout = async () => {
+        await logout();
+        navigate('/');
+    };
 
     return (
         <div className={styles.navbar}>
             <ul className={styles.linksList}>
-                {/* Links accesible to everyone */}
+                {/* Public links */}
                 <li>
                     <Link to="/">Home</Link>
                 </li>
@@ -21,39 +22,35 @@ function NavBar() {
                     <Link to="/catalog">Catalog</Link>
                 </li>
 
-                {/* links only accessible if userRole is 'user' show this links */}
+                {/* User links */}
                 {userRole === 'user' && (
-                    <>
-                        <li>
-                            <Link to="/menuUser">Menu User</Link>
-                        </li>
-                    </>
+                    <li>
+                        <Link to="/menuuser">Menu User</Link>
+                    </li>
                 )}
 
-                {/* links only accessible if userRole is 'admin' show this links */}
+                {/* Admin links */}
                 {userRole === 'admin' && (
-                    <>
-                        <li>
-                            <Link to="/menuAdmin">Menu Admin</Link>
-                        </li>
-                        {/* <li>
-                            <Link to="/adminloans">Admin Loans</Link>
-                        </li>
-                        <li>
-                            <Link to="/books">Books</Link>
-                        </li>
-                        <li>
-                            <Link to="/users">Users</Link>
-                        </li>
-                        <li>
-                            <Link to="/queries">Queries</Link>
-                        </li> */}
-                    </>
+                    <li>
+                        <Link to="/menuadmin">Menu Admin</Link>
+                    </li>
                 )}
 
-                <li>
-                    <Link to="/login">Login</Link>
-                </li>
+                {/* Auth links */}
+                {!userRole ? (
+                    <li>
+                        <Link to="/login">Login</Link>
+                    </li>
+                ) : (
+                    <li>
+                        <button
+                            className={styles.logoutBtn}
+                            onClick={handleLogout}
+                        >
+                            Logout
+                        </button>
+                    </li>
+                )}
             </ul>
         </div>
     );

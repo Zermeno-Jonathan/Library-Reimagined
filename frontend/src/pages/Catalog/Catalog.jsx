@@ -1,20 +1,17 @@
 import { useState, useEffect, useCallback } from 'react';
 import supabase from '../../config/supabaseClient';
 import styles from './Catalog.module.css';
+import { useAuth } from '../../context/AuthContext';
 
 function Catalog() {
+    const { userRole } = useAuth();
+
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState('');
-    const [userRole, setUserRole] = useState(null);
     const [requestStatus, setRequestStatus] = useState({});
     const [categories, setCategories] = useState([]);
     const [activeCategory, setActiveCategory] = useState('All');
-
-    useEffect(() => {
-        const role = localStorage.getItem('userRole');
-        setUserRole(role);
-    }, []);
 
     const fetchBooks = useCallback(async (query = '', category = 'All') => {
         setLoading(true);

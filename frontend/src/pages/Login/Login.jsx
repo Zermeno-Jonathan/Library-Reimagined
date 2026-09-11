@@ -1,4 +1,3 @@
-// import { useNavigate, Link } from 'react-router-dom';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import FormInput from '../../components/FormInput/FormInput';
@@ -13,7 +12,6 @@ function Login() {
     const [passwordError, setPasswordError] = useState('');
 
     const handleSubmit = async (e) => {
-        // Validations - Prevents default behavior
         e.preventDefault();
 
         setEmailError('');
@@ -34,38 +32,20 @@ function Login() {
             return;
         }
 
-        // Login with Supabase
-        const { data, error } = await supabase.auth.signInWithPassword({
+        const { error } = await supabase.auth.signInWithPassword({
             email,
             password,
         });
 
         if (error) {
             setEmailError('Email or password is incorrect');
-            console.log(error);
+            console.error(error);
             return;
         }
 
-        if (data) {
-            // Fetch the user role from the 'users' table
-            const { data: userData, error: userError } = await supabase
-                .from('users')
-                .select('rol')
-                .eq('auth_id', data.user.id) // ← aquí
-                .single();
-
-            if (userError) {
-                console.error('Error getting user role:', userError);
-                return;
-            }
-
-            // Store the user role in localStorage
-            localStorage.setItem('userRole', userData.rol);
-            navigate('/');
-        }
-
-        //  Delete this console.log
-        console.log('Form válido:', { email, password });
+        // AuthContext detecta el cambio de sesión automáticamente
+        // ya no necesitamos fetchear el rol ni guardarlo en localStorage
+        navigate('/');
     };
 
     return (
@@ -82,7 +62,7 @@ function Login() {
                     value={email}
                     onChange={(e) => {
                         setEmail(e.target.value);
-                        setEmailError(''); // <= limpia el error cuando escribe
+                        setEmailError('');
                     }}
                     error={emailError}
                 />
@@ -94,21 +74,17 @@ function Login() {
                     value={password}
                     onChange={(e) => {
                         setPassword(e.target.value);
-                        setPasswordError(''); // <= limpia el error cuando escribe
+                        setPasswordError('');
                     }}
                     error={passwordError}
                 />
 
-                {/* Button to login */}
                 <button className={styles.loginButton} type="submit">
                     Login
                 </button>
 
                 <div className={styles.linksContainer}>
-                    {/* Link to home page */}
                     <Link to="/">Go back</Link>
-
-                    {/* Link to Register form */}
                     <Link to="/register">Don't have an account? Register</Link>
                 </div>
             </div>
