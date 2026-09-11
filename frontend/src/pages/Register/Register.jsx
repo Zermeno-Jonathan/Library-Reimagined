@@ -7,8 +7,10 @@ import styles from './Register.module.css';
 
 function Register() {
     const navigate = useNavigate();
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [nameError, setNameError] = useState('');
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
 
@@ -33,8 +35,13 @@ function Register() {
             return;
         }
 
+        if (!name) {
+            setNameError('Name is required');
+            return;
+        }
+
         // Register the user with the provided data in Supabase
-        const { data, error } = await supabase.auth.signUp({
+        const { error } = await supabase.auth.signUp({
             email,
             password,
         });
@@ -44,12 +51,11 @@ function Register() {
             return;
         }
 
-        if (data) {
-            console.log('Account created successfully:', data);
-            navigate('/login');
-        }
-
-        console.log('Form válido:', { email, password });
+        const {
+            data: { user },
+        } = await supabase.auth.getUser();
+        await supabase.from('users').update({ name }).eq('auth_id', user.id);
+        navigate('/login');
     };
 
     return (
@@ -58,6 +64,18 @@ function Register() {
                 <div className={styles.divTitle}>
                     <h3 className={styles.registerTitle}>Create an account</h3>
                 </div>
+
+                <FormInput
+                    id="name"
+                    label="Enter your name"
+                    type="text"
+                    value={name}
+                    onChange={(e) => {
+                        setName(e.target.value);
+                        setNameError('');
+                    }}
+                    error={nameError}
+                />
 
                 <FormInput
                     id="email"

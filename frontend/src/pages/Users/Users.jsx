@@ -30,7 +30,7 @@ function Users() {
         try {
             let request = supabase
                 .from('users')
-                .select('id, email, rol, created_at, auth_id')
+                .select('id, email, name, rol, created_at, auth_id')
                 .order('created_at', { ascending: false });
 
             if (query.trim()) {
@@ -248,6 +248,7 @@ function Users() {
                     <table className={styles.table}>
                         <thead>
                             <tr>
+                                <th className={styles.th}>Name</th>
                                 <th className={styles.th}>Email</th>
                                 <th className={styles.th}>Role</th>
                                 <th className={styles.th}>Registered</th>
@@ -257,6 +258,9 @@ function Users() {
                         <tbody>
                             {users.map((user) => (
                                 <tr key={user.id} className={styles.tr}>
+                                    <td className={styles.td}>
+                                        {user.name ?? '—'}
+                                    </td>
                                     <td className={styles.td}>{user.email}</td>
                                     <td className={styles.td}>
                                         <span
