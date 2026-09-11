@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import { useAuth } from './context/AuthContext';
 
 // Layouts
 import MainLayout from './components/layouts/mainLayout/MainLayout';
@@ -23,6 +25,15 @@ import NotFound from './pages/NotFound/NotFound';
 import Profile from './pages/Profile/Profile';
 import MyLoans from './pages/MyLoans/MyLoans';
 
+function GuestRoute({ children }) {
+    const { userRole, loading } = useAuth();
+
+    if (loading) return null;
+    if (userRole) return <Navigate to="/" replace />;
+
+    return children;
+}
+
 function App() {
     return (
         <BrowserRouter>
@@ -32,7 +43,6 @@ function App() {
                     {/* Public routes */}
                     <Route path="/" element={<Home />} />
                     <Route path="/catalog" element={<Catalog />} />
-                    <Route path="/queries" element={<Queries />} />
 
                     {/* Protected routes Admin*/}
                     <Route
@@ -42,6 +52,7 @@ function App() {
                         <Route path="/books" element={<Books />} />
                         <Route path="/menuadmin" element={<MenuAdmin />} />
                         <Route path="/users" element={<Users />} />
+                        <Route path="/queries" element={<Queries />} />
                     </Route>
 
                     {/* Protected routes User*/}
@@ -55,8 +66,22 @@ function App() {
 
                 {/* Auth pages */}
                 <Route element={<AuthLayout />}>
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
+                    <Route
+                        path="/login"
+                        element={
+                            <GuestRoute>
+                                <Login />
+                            </GuestRoute>
+                        }
+                    />
+                    <Route
+                        path="/register"
+                        element={
+                            <GuestRoute>
+                                <Register />
+                            </GuestRoute>
+                        }
+                    />
                 </Route>
 
                 {/* Catch-all — Any other route that doesn't match a defined route */}
