@@ -27,3 +27,18 @@
 .linksList .logButton:hover {
     background-color: var(--bg-color-secondary);
 }
+.logoutBtn {
+    background: none;
+    border: none;
+    font-family: var(--font-body);
+    font-size: inherit;
+    color: inherit;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: underline;
+    text-decoration-color: var(--color-link-underline);
+}
+
+.logoutBtn:hover {
+    color: var(--color-text-2);
+}

@@ -15,7 +15,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: var(--bg-color-card);
+    background-color: var(--bg-color-card-2);
     padding: 2rem;
     width: 50%;
     max-width: 400px;

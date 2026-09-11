@@ -117,6 +117,7 @@
     border-collapse: collapse;
     font-family: var(--font-body);
     font-size: 0.9375rem;
+    background-color: var(--bg-color-card-2);
 }
 
 .th {
