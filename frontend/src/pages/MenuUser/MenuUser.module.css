@@ -54,3 +54,16 @@
     font-style: oblique;
     color: var(--color-text-2);
 }
+
+/* Responsive */
+@media (max-width: 600px) {
+    .menuUserContainer {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    .menuUserLinks {
+        width: 100%;
+        padding: 1rem;
+    }
+}

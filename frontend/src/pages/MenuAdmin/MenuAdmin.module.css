@@ -41,9 +41,7 @@
 }
 
 .menuAdminLink:hover {
-    /* border-radius: 0.25rem; */
     background-color: var(--bg-color-primary);
-    /* color: var(--bg-color-secondary); */
 }
 
 .pageTitle {
@@ -55,4 +53,17 @@
     font-size: 14px;
     font-style: oblique;
     color: var(--color-text-2);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .menuAdminContainer {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    .menuAdminLinks {
+        width: 100%;
+        padding: 1rem;
+    }
 }

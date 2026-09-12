@@ -41,7 +41,6 @@ function Catalog() {
             const fetched = data || [];
             setBooks(fetched);
 
-            // Extrae categorías únicas para el select
             if (category === 'All' && !query.trim()) {
                 const unique = [
                     'All',
@@ -61,13 +60,11 @@ function Catalog() {
 
     const logQuery = useCallback(async (query) => {
         if (!query.trim()) return;
-
         try {
             const {
                 data: { user },
             } = await supabase.auth.getUser();
             if (!user) return;
-
             await supabase.from('queries').insert({
                 user_id: user.id,
                 query_text: query.trim(),
@@ -77,18 +74,15 @@ function Catalog() {
         }
     }, []);
 
-    // Initial fetch
     useEffect(() => {
         fetchBooks('', activeCategory);
     }, [fetchBooks, activeCategory]);
 
-    // Debounced search
     useEffect(() => {
         const searchTimer = setTimeout(() => {
             fetchBooks(search, activeCategory);
         }, 350);
 
-        // Log solo si el usuario pausa más de 1.5s y tiene al menos 3 caracteres
         const logTimer = setTimeout(() => {
             if (search.trim().length >= 3) {
                 logQuery(search);
@@ -136,7 +130,6 @@ function Catalog() {
                 return;
             }
 
-            // Decrementa stock localmente
             setBooks((prev) =>
                 prev.map((b) =>
                     b.id === book.id ? { ...b, stock: b.stock - 1 } : b,
@@ -169,6 +162,11 @@ function Catalog() {
         if (book._limitReached) return 'Loan limit reached';
         if (book.stock <= 0) return 'Unavailable';
         return 'Request Loan';
+    };
+
+    const getCoverUrl = (isbn) => {
+        const clean = isbn.replace(/-/g, '');
+        return `https://covers.openlibrary.org/b/isbn/${clean}-M.jpg`;
     };
 
     return (
@@ -221,58 +219,88 @@ function Catalog() {
                             key={book.id}
                             className={`${styles.card} ${book.stock <= 0 ? styles.cardBorrowed : ''}`}
                         >
-                            <div className={styles.cardBody}>
-                                <h2 className={styles.bookTitle}>
-                                    {book.title}
-                                </h2>
-                                <p className={styles.bookAuthor}>
-                                    {book.author}
-                                </p>
-                                <p className={styles.bookYear}>
-                                    {new Date(book.year).getFullYear()}
-                                </p>
-                                {book.category && (
-                                    <span className={styles.categoryBadge}>
-                                        {book.category}
+                            {/* Cover */}
+                            <div className={styles.coverWrapper}>
+                                <img
+                                    src={getCoverUrl(book.isbn)}
+                                    alt={`Cover of ${book.title}`}
+                                    className={styles.coverImg}
+                                    onError={(e) => {
+                                        e.target.style.display = 'none';
+                                        e.target.nextSibling.style.display =
+                                            'flex';
+                                    }}
+                                />
+                                <div className={styles.coverFallback}>
+                                    <span className={styles.coverFallbackText}>
+                                        {book.title.charAt(0)}
                                     </span>
-                                )}
-                                <span className={styles.isbnBadge}>
-                                    ISBN {book.isbn}
-                                </span>
+                                </div>
                             </div>
 
-                            <div className={styles.cardFooter}>
-                                <span
-                                    className={`${styles.statusBadge} ${
-                                        book.stock > 0
-                                            ? styles.available
-                                            : styles.borrowed
-                                    }`}
-                                >
-                                    {book.stock > 0
-                                        ? `${book.stock} available`
-                                        : 'Unavailable'}
-                                </span>
+                            {/* Info */}
+                            <div className={styles.cardRight}>
+                                <div className={styles.cardBody}>
+                                    <h2 className={styles.bookTitle}>
+                                        {book.title}
+                                    </h2>
+                                    <p className={styles.bookAuthor}>
+                                        {book.author}
+                                    </p>
+                                    <p className={styles.bookYear}>
+                                        {new Date(book.year).getFullYear()}
+                                    </p>
+                                    <div className={styles.badges}>
+                                        {book.category && (
+                                            <span
+                                                className={styles.categoryBadge}
+                                            >
+                                                {book.category}
+                                            </span>
+                                        )}
+                                        <span className={styles.isbnBadge}>
+                                            ISBN {book.isbn}
+                                        </span>
+                                    </div>
+                                </div>
 
-                                {userRole === 'user' && (
-                                    <button
-                                        className={`${styles.loanButton} ${
-                                            book.stock <= 0 ||
-                                            book._limitReached ||
-                                            requestStatus[book.id] === 'loading'
-                                                ? styles.loanButtonDisabled
-                                                : ''
-                                        } ${requestStatus[book.id] === 'success' ? styles.loanButtonSuccess : ''}`}
-                                        onClick={() => handleRequestLoan(book)}
-                                        disabled={
-                                            book.stock <= 0 ||
-                                            book._limitReached ||
-                                            requestStatus[book.id] === 'loading'
-                                        }
+                                <div className={styles.cardFooter}>
+                                    <span
+                                        className={`${styles.statusBadge} ${
+                                            book.stock > 0
+                                                ? styles.available
+                                                : styles.borrowed
+                                        }`}
                                     >
-                                        {getButtonLabel(book)}
-                                    </button>
-                                )}
+                                        {book.stock > 0
+                                            ? `${book.stock} available`
+                                            : 'Unavailable'}
+                                    </span>
+
+                                    {userRole === 'user' && (
+                                        <button
+                                            className={`${styles.loanButton} ${
+                                                book.stock <= 0 ||
+                                                book._limitReached ||
+                                                requestStatus[book.id] ===
+                                                    'loading'
+                                                    ? styles.loanButtonDisabled
+                                                    : ''
+                                            } ${requestStatus[book.id] === 'success' ? styles.loanButtonSuccess : ''}`}
+                                            onClick={() =>
+                                                handleRequestLoan(book)
+                                            }
+                                            disabled={
+                                                book.stock <= 0 ||
+                                                book._limitReached ||
+                                                requestStatus[book.id] ===
+                                                    'loading'
+                                            }
+                                        >
+                                            {getButtonLabel(book)}
+                                        </button>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     ))}

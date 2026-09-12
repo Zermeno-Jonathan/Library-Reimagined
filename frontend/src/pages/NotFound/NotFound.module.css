@@ -25,7 +25,6 @@
 
 /* link styling */
 .notFound a {
-    color: var(--color-text);
     text-decoration: none;
     font-size: 14px;
     border-radius: 0.5rem;
@@ -39,4 +38,19 @@
     font-size: 14px;
     border-radius: 0.5rem;
     background-color: var(--bg-color-secondary);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .notFound {
+        margin-top: 4rem;
+        padding: 2rem 1.5rem;
+        width: 90%;
+        max-width: 90%;
+        gap: 1.5rem;
+    }
+
+    .notFoundTitle {
+        font-size: 2.5rem;
+    }
 }
