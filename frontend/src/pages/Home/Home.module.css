@@ -1,27 +1,59 @@
 .homeContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
     padding: 1.5rem;
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
 }
 
-/* Welcome Section */
+.heroGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: var(--bg-color-card-2);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    min-width: 0;
+}
+
+.illustrationWrapper {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    border: 1px solid var(--bg-color-secondary);
+    border-radius: 0.5rem;
+}
+
+.contentWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+}
+
 .welcomeSection {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    align-items: center;
+    text-align: center;
 }
 
 .heading {
     font-family: var(--font-heading);
-    font-size: 1.875rem;
+    font-size: 2.5rem;
     font-weight: 700;
     color: var(--color-text);
     margin: 0;
-    line-height: 1.2;
+    line-height: 1.15;
+}
+
+.divider {
+    width: 3rem;
+    height: 3px;
+    background-color: var(--bg-color-secondary);
+    border-radius: 2px;
 }
 
 .paragraph {
@@ -29,38 +61,38 @@
     font-size: 1rem;
     color: var(--color-text-2);
     margin: 0;
-    line-height: 1.6;
-    max-width: 600px;
+    line-height: 1.7;
+    max-width: 360px;
+    text-align: center;
 }
 
-/* Stats Section */
-.statsSection {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin: 1rem 0;
-}
-
+/* Stat card */
 .statCard {
     background-color: var(--bg-color-third);
     border: 1px solid var(--bg-color-secondary);
     border-radius: 0.5rem;
-    padding: 2rem 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.2s ease;
+    gap: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 420px;
+    overflow: hidden;
+    min-width: 0;
 }
 
-.statCard:hover {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+.statContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 1.5rem 1.5rem;
 }
 
 .statNumber {
     font-family: var(--font-heading);
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 700;
     color: var(--color-text);
     margin: 0;
@@ -69,156 +101,183 @@
 
 .statLabel {
     font-family: var(--font-body);
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     color: var(--color-text-2);
-    margin-top: 0.5rem;
-    margin-bottom: 0;
-    text-align: center;
+    margin: 0;
     font-weight: 500;
 }
 
-/* CTA Section */
-.ctaSection {
-    display: flex;
-    justify-content: flex-start;
-    margin-top: 0.5rem;
-    /* align-items: center; */
-    justify-content: center;
+.statSub {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: var(--color-text-2);
+    margin: 0;
 }
 
+/* Carousels */
+.carouselWrapper {
+    width: 100%;
+    overflow: hidden;
+    padding: 0.5rem 0;
+    border-top: 1px solid rgba(208, 179, 135, 0.3);
+    border-bottom: 1px solid rgba(208, 179, 135, 0.3);
+    min-width: 0;
+    background-color: var(--bg-color-primary);
+}
+
+.carouselWrapper:first-child {
+    border-top: none;
+}
+
+.carouselWrapper:last-child {
+    border-bottom: none;
+}
+
+.carouselTrackForward {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    animation: scrollForward 65s linear infinite;
+}
+
+.carouselTrackReverse {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    animation: scrollReverse 15s linear infinite;
+}
+
+@keyframes scrollForward {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-33.333%);
+    }
+}
+
+@keyframes scrollReverse {
+    0% {
+        transform: translateX(-33.333%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.carouselItem {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: var(--color-text-2);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.carouselItem::before {
+    content: '·';
+    margin-right: 2rem;
+    color: var(--bg-color-secondary);
+}
+
+.carouselItemCat {
+    color: var(--color-text-2);
+    /* font-style: italic; */
+}
+
+/* CTA Button */
 .exploreButton {
     background-color: #ffffff;
     border: 1px solid var(--bg-color-secondary);
     border-radius: 0.5rem;
     color: var(--color-text-2);
     font-family: var(--font-body);
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     font-weight: 500;
-    padding: 0.5rem 1.5rem;
+    padding: 0.625rem 1.5rem;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow:
-        0 1px 3px rgba(0, 0, 0, 0.1),
-        0 1px 2px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
     user-select: none;
     -webkit-user-select: none;
-    touch-action: manipulation;
+    width: 100%;
 }
 
 .exploreButton:hover {
     background-color: var(--bg-color-primary);
     color: var(--color-text);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-}
-
-.exploreButton:focus {
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-}
-
-.exploreButton:focus-visible {
-    box-shadow: none;
 }
 
 .exploreButton:active {
     transform: scale(0.98);
 }
 
-/* Temporary Logout */
-.tempLogout {
-    font-family: var(--font-body);
-    font-size: 0.875rem;
-    color: var(--color-text-2);
-    margin-top: 1rem;
-}
-
-.tempLogout a {
-    color: var(--color-text-3);
-    text-decoration: underline;
-    cursor: pointer;
-    transition: color 0.2s ease;
-}
-
-.tempLogout a:hover {
-    color: var(--color-text);
-}
-
-/* Responsive Design */
-
-/* Tablet (768px and up) */
+/* Tablet and up — side by side */
 @media (min-width: 768px) {
     .homeContainer {
+        padding: 2rem;
+    }
+
+    .heroGrid {
+        flex-direction: row;
+        align-items: center;
         gap: 3rem;
         padding: 2rem;
     }
 
-    .heading {
-        font-size: 2.25rem;
+    .illustrationWrapper {
+        flex: 1;
+        max-width: none;
+        margin: 0;
+    }
+
+    .contentWrapper {
+        flex: 1;
+        gap: 2.5rem;
+        align-items: flex-start;
+    }
+
+    .welcomeSection {
+        align-items: flex-start;
+        text-align: left;
     }
 
     .paragraph {
-        font-size: 1.125rem;
-        max-width: 700px;
-    }
-
-    .statsSection {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        margin: 1.5rem 0;
+        text-align: left;
+        max-width: 420px;
     }
 
     .statCard {
-        padding: 2.5rem 2rem;
+        width: min(100%, 520px);
+        max-width: 100%;
     }
 
-    .statNumber {
-        font-size: 3.5rem;
+    .exploreButton {
+        max-width: none;
+        width: auto;
+        align-self: flex-start;
+    }
+
+    .heading {
+        font-size: 3rem;
     }
 }
 
-/* Desktop (1024px and up) */
+/* Desktop */
 @media (min-width: 1024px) {
     .homeContainer {
-        gap: 4rem;
         padding: 2.5rem;
+        flex-direction: row;
+    }
+
+    .heroGrid {
+        gap: 4rem;
     }
 
     .heading {
-        font-size: 2.5rem;
+        font-size: 3.5rem;
     }
 
     .paragraph {
-        font-size: 1.125rem;
-        max-width: 750px;
-    }
-
-    .statsSection {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2.5rem;
-        margin: 2rem 0;
-    }
-
-    .statCard {
-        padding: 3rem 2.5rem;
-    }
-
-    .statNumber {
-        font-size: 4rem;
-    }
-}
-
-/* Large Desktop (1440px and up) */
-@media (min-width: 1440px) {
-    .homeContainer {
-        max-width: 1200px;
-        gap: 4.5rem;
-    }
-
-    .heading {
-        font-size: 2.75rem;
-    }
-
-    .statsSection {
-        gap: 3rem;
+        font-size: 1.0625rem;
     }
 }

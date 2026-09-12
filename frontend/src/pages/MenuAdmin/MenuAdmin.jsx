@@ -53,7 +53,7 @@ function MenuAdmin() {
                             </Link>
                         </h4>
                         <p className={styles.linkDescriptions}>
-                            - Monitor the queries
+                            - Monitor user queries
                         </p>
                     </div>
                 </div>

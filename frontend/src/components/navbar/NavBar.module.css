@@ -1,11 +1,19 @@
-/* .navbar {
-    font-family: 'Lora', serif;
-} */
+.navbar {
+    position: relative;
+    font-family: var(--font-body);
+}
+
+.linksList {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 
 .linksList > li {
-    /* padding: 5px; */
     list-style: none;
-    display: inline-block;
 }
 
 .linksList a {
@@ -13,6 +21,9 @@
     text-decoration: none;
     font-size: 16px;
     border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    display: block;
+    transition: all 200ms ease-in-out;
 }
 
 .linksList a:hover {
@@ -20,25 +31,61 @@
     background-color: var(--bg-color-primary);
 }
 
-.logButton {
-    background-color: var(--bg-color-primary);
+.menuButton {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--color-text);
+    font-size: 1.75rem;
+    cursor: pointer;
 }
 
-.linksList .logButton:hover {
-    background-color: var(--bg-color-secondary);
-}
 .logoutBtn {
     background: none;
     border: none;
     font-family: var(--font-body);
-    font-size: inherit;
-    color: inherit;
+    font-size: 16px;
+    color: var(--color-text);
     cursor: pointer;
-    padding: 0;
-    text-decoration: underline;
-    text-decoration-color: var(--color-link-underline);
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
 }
 
 .logoutBtn:hover {
     color: var(--color-text-2);
+    background-color: var(--bg-color-primary);
+}
+
+/* Tablet and mobile */
+@media (max-width: 1024px) {
+    .navbar {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .menuButton {
+        display: block;
+    }
+
+    .linksList {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        min-width: 110px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.25rem;
+        padding: 0.75rem;
+        background-color: var(--bg-color-card-2);
+        border: 1px solid var(--bg-color-secondary);
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        z-index: 50;
+    }
+
+    .linksListOpen {
+        display: flex;
+    }
 }
