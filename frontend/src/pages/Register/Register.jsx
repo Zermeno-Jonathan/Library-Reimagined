@@ -35,6 +35,11 @@ function Register() {
             return;
         }
 
+        if (password.length < 6) {
+            setPasswordError('Password must be at least 6 characters');
+            return;
+        }
+
         if (!name) {
             setNameError('Name is required');
             return;

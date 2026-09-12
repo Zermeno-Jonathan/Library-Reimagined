@@ -134,6 +134,8 @@ function Books() {
         if (!form.author.trim()) errors.author = 'Author is required';
         if (!form.year) errors.year = 'Year is required';
         if (!form.isbn.trim()) errors.isbn = 'ISBN is required';
+        if (form.isbn.trim().length < 10)
+            errors.isbn = 'ISBN must be at least 10 characters';
         if (!form.stock || form.stock < 0)
             errors.stock = 'Stock must be 0 or more';
         return errors;
