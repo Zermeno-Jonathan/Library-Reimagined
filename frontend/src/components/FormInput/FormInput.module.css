@@ -25,18 +25,26 @@
     font-size: 14px;
 }
 
-/* When input is focused */
-.input:focus ~ .label,
-.input:not(:placeholder-shown) ~ .label {
-    top: -0.5rem;
-    font-size: 0.75rem;
-    color: var(--color-text-3);
-}
-
 .error {
     color: rgb(209, 0, 0);
     font-size: 0.8rem;
     margin-top: 0.15rem;
     display: block;
     height: 1rem;
+}
+
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    box-shadow: 0 0 0px 1000px white inset;
+    -webkit-text-fill-color: var(--color-text);
+}
+
+.input:focus ~ .label,
+.input:not(:placeholder-shown) ~ .label,
+.input:-webkit-autofill ~ .label {
+    top: -0.5rem;
+    font-size: 0.75rem;
+    color: var(--color-text-3);
 }

@@ -24,6 +24,7 @@ import Users from './pages/Users/Users';
 import NotFound from './pages/NotFound/NotFound';
 import Profile from './pages/Profile/Profile';
 import MyLoans from './pages/MyLoans/MyLoans';
+import ResetPassword from './pages/ResetPassword/ResetPassword';
 
 function GuestRoute({ children }) {
     const { userRole, loading } = useAuth();
@@ -83,6 +84,7 @@ function App() {
                         }
                     />
                 </Route>
+                <Route path="/resetpassword" element={<ResetPassword />} />
 
                 {/* Catch-all — Any other route that doesn't match a defined route */}
                 <Route path="*" element={<NotFound />} />
