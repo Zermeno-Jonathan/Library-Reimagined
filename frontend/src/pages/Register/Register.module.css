@@ -15,7 +15,7 @@
 }
 
 .registerButton {
-    background-color: #ffffff;
+    background-color: var(--bg-color-button-1);
     border-color: #d0b387;
     border-radius: 0.5rem;
     box-sizing: border-box;
@@ -35,10 +35,10 @@
     -webkit-user-select: none;
     touch-action: manipulation;
     align-self: flex-end;
-    margin-top: 1rem;
-    margin-bottom: 1.5rem;
-    margin-right: 4px;
-    margin-top: -1.5rem;
+    /* margin-top: 1rem; */
+    /* margin-bottom: 1.5rem; */
+    /* margin-right: 4px; */
+    /* margin-top: -1.5rem; */
 }
 
 .registerButton:hover {

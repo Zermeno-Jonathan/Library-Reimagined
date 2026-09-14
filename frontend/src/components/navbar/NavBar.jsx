@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { useTheme } from '../../context/ThemeContext';
 import styles from './NavBar.module.css';
 
 function NavBar() {
     const { userRole, logout } = useAuth();
+    const { theme, toggleTheme } = useTheme();
     const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -78,6 +80,15 @@ function NavBar() {
                         </button>
                     </li>
                 )}
+                <li>
+                    <button
+                        className={styles.themeToggle}
+                        onClick={toggleTheme}
+                        aria-label="Toggle dark mode"
+                    >
+                        {theme === 'light' ? '🌙' : '☀️'}
+                    </button>
+                </li>
             </ul>
         </nav>
     );

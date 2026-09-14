@@ -68,7 +68,7 @@
 
 /* Stat card */
 .statCard {
-    background-color: var(--bg-color-third);
+    /* background-color: var(--bg-color-third); */
     border: 1px solid var(--bg-color-secondary);
     border-radius: 0.5rem;
     display: flex;
@@ -123,6 +123,7 @@
     border-bottom: 1px solid rgba(208, 179, 135, 0.3);
     min-width: 0;
     background-color: var(--bg-color-primary);
+    border-radius: 0.25rem;
 }
 
 .carouselWrapper:first-child {
@@ -186,20 +187,34 @@
 
 /* CTA Button */
 .exploreButton {
-    background-color: #ffffff;
-    border: 1px solid var(--bg-color-secondary);
-    border-radius: 0.5rem;
     color: var(--color-text-2);
     font-family: var(--font-body);
-    font-size: 0.9375rem;
-    font-weight: 500;
-    padding: 0.625rem 1.5rem;
-    cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    background-color: var(--bg-color-button-1);
+    border-color: #d0b387;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    color: var(--color-text-2);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    padding: 0.25rem 1rem;
+    text-align: center;
+    text-decoration: none #d1d5db solid;
+    text-decoration-thickness: auto;
+    box-shadow:
+        0 1px 3px 0 rgba(0, 0, 0, 0.1),
+        0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    cursor: pointer;
     user-select: none;
     -webkit-user-select: none;
-    width: 100%;
+    touch-action: manipulation;
+    align-self: flex-end;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    margin-right: 4px;
+    margin-top: -1.5rem;
 }
 
 .exploreButton:hover {
@@ -255,6 +270,7 @@
         max-width: none;
         width: auto;
         align-self: flex-start;
+        background-color: var(--bg-color-button-1);
     }
 
     .heading {

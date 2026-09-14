@@ -56,8 +56,22 @@
     background-color: var(--bg-color-primary);
 }
 
+.themeToggle {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    transition: background-color 200ms ease-in-out;
+}
+
+.themeToggle:hover {
+    background-color: var(--bg-color-primary);
+}
+
 /* Tablet and mobile */
-@media (max-width: 1024px) {
+@media (max-width: 748px) {
     .navbar {
         display: flex;
         justify-content: flex-end;

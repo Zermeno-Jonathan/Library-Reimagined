@@ -2,18 +2,17 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--bg-color-primary);
     border-radius: 0.5rem;
 }
 
 .mainLayout {
     display: flex;
     flex-direction: column;
-    min-height: 100%; /* altura mínima de la pantalla */
+    min-height: 100%;
     gap: 1rem;
 }
 
 .content {
-    flex: 1; /* toma todo el espacio disponible */
+    flex: 1;
 }

@@ -12,6 +12,8 @@
     font-weight: 400;
     outline: none;
     border-radius: 0.25rem;
+    background: var(--bg-color-card-2);
+    color: var(--color-text-1);
 }
 
 .label {
@@ -21,7 +23,7 @@
     color: var(--color-text-2);
     transition: all 0.2s ease;
     pointer-events: none;
-    background: white;
+    background: var(--bg-color-card-2);
     font-size: 14px;
 }
 
@@ -36,8 +38,8 @@
 .input:-webkit-autofill,
 .input:-webkit-autofill:hover,
 .input:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0px 1000px white inset;
-    box-shadow: 0 0 0px 1000px white inset;
+    -webkit-box-shadow: 0 0 0px 1000px var(--bg-color-card-2) inset;
+    box-shadow: 0 0 0px 1000px var(--bg-color-card-2) inset;
     -webkit-text-fill-color: var(--color-text);
 }
 
