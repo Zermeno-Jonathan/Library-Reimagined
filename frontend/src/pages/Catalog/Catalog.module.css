@@ -262,7 +262,7 @@
 
 .available {
     background-color: rgba(1, 136, 51, 0.5);
-    color: #009b39;
+    color: var(--color-text);
     border: 1px solid rgba(34, 197, 94, 0.3);
 }
 
@@ -274,7 +274,7 @@
 
 /* Loan Button */
 .loanButton {
-    background-color: #ffffff;
+    background-color: var(--bg-color-button-1);
     border: 1px solid var(--bg-color-secondary);
     border-radius: 0.5rem;
     color: var(--color-text-2);

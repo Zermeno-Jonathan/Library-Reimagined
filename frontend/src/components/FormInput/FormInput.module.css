@@ -50,3 +50,7 @@
     font-size: 0.75rem;
     color: var(--color-text-3);
 }
+
+[data-theme='dark'] .input::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}

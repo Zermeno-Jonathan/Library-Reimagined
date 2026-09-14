@@ -52,48 +52,50 @@ function ResetPassword() {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className={styles.container}>
-                <div className={styles.divTitle}>
-                    <h3 className={styles.title}>Set a new password</h3>
-                </div>
+            <div className={styles.mainContainer}>
+                <div className={styles.formContainer}>
+                    <div className={styles.divTitle}>
+                        <h3 className={styles.title}>Set a new password</h3>
+                    </div>
 
-                {done ? (
-                    <p className={styles.success}>
-                        Password updated. Redirecting...
-                    </p>
-                ) : (
-                    <>
-                        <FormInput
-                            id="new-password"
-                            label="New password"
-                            type="password"
-                            value={password}
-                            onChange={(e) => {
-                                setPassword(e.target.value);
-                                setPasswordError('');
-                            }}
-                            error={passwordError}
-                        />
-                        <FormInput
-                            id="confirm-password"
-                            label="Confirm new password"
-                            type="password"
-                            value={confirmPassword}
-                            onChange={(e) => {
-                                setConfirmPassword(e.target.value);
-                                setConfirmError('');
-                            }}
-                            error={confirmError}
-                        />
-                        <button
-                            className={styles.submitBtn}
-                            type="submit"
-                            disabled={submitting}
-                        >
-                            {submitting ? 'Saving...' : 'Update password'}
-                        </button>
-                    </>
-                )}
+                    {done ? (
+                        <p className={styles.success}>
+                            Password updated. Redirecting...
+                        </p>
+                    ) : (
+                        <>
+                            <FormInput
+                                id="new-password"
+                                label="New password"
+                                type="password"
+                                value={password}
+                                onChange={(e) => {
+                                    setPassword(e.target.value);
+                                    setPasswordError('');
+                                }}
+                                error={passwordError}
+                            />
+                            <FormInput
+                                id="confirm-password"
+                                label="Confirm new password"
+                                type="password"
+                                value={confirmPassword}
+                                onChange={(e) => {
+                                    setConfirmPassword(e.target.value);
+                                    setConfirmError('');
+                                }}
+                                error={confirmError}
+                            />
+                            <button
+                                className={styles.submitBtn}
+                                type="submit"
+                                disabled={submitting}
+                            >
+                                {submitting ? 'Saving...' : 'Update password'}
+                            </button>
+                        </>
+                    )}
+                </div>
             </div>
         </form>
     );
