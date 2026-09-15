@@ -13,7 +13,6 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import Home from './pages/Home/Home';
 import Books from './pages/Books/Books';
 import Catalog from './pages/Catalog/Catalog';
-import Loans from './pages/Loans/Loans';
 import AdminLoans from './pages/AdminLoans/AdminLoans';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
@@ -58,7 +57,6 @@ function App() {
 
                     {/* Protected routes User*/}
                     <Route element={<ProtectedRoute allowedRoles={['user']} />}>
-                        <Route path="/loans" element={<Loans />} />
                         <Route path="/menuuser" element={<MenuUser />} />
                         <Route path="/profile" element={<Profile />} />
                         <Route path="/myloans" element={<MyLoans />} />
