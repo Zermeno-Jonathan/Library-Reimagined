@@ -215,6 +215,7 @@
     margin-bottom: 1.5rem;
     margin-right: 4px;
     margin-top: -1.5rem;
+    align-self: stretch;
 }
 
 .exploreButton:hover {

@@ -70,6 +70,10 @@
     background-color: var(--bg-color-primary);
 }
 
+.menuOverlay {
+    display: none;
+}
+
 /* Tablet and mobile */
 @media (max-width: 748px) {
     .navbar {
@@ -101,5 +105,12 @@
 
     .linksListOpen {
         display: flex;
+    }
+
+    .menuOverlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 49;
     }
 }

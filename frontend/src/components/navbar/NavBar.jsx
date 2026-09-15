@@ -31,6 +31,10 @@ function NavBar() {
                 ☰
             </button>
 
+            {isMenuOpen && (
+                <div className={styles.menuOverlay} onClick={closeMenu} />
+            )}
+
             <ul
                 className={`${styles.linksList} ${
                     isMenuOpen ? styles.linksListOpen : ''
