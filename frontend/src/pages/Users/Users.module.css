@@ -154,13 +154,13 @@
 
 .admin {
     background-color: rgba(208, 179, 135, 0.3);
-    color: var(--color-text);
+    color: var(--color-text-2);
     border: 1px solid var(--bg-color-secondary);
 }
 
 .user {
     background-color: rgba(107, 114, 128, 0.1);
-    color: var(--color-text);
+    color: var(--color-text-2);
     border: 1px solid rgba(107, 114, 128, 0.25);
 }
 

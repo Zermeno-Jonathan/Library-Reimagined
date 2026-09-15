@@ -22,6 +22,7 @@ body,
     --color-text: #000000;
     --color-text-2: #686868;
     --color-text-3: #d0b387;
+    --color-text-status: #ffffff;
     --color-link-underline: #d0b387;
     --font-heading: 'Lora', serif;
     --font-body: 'Inter', sans-serif;
@@ -38,6 +39,7 @@ body,
     --color-text: #ffffff;
     --color-text-2: #dad7ca;
     --color-text-3: #d0b387;
+    --color-text-status: #ffffff;
     --color-link-underline: #d0b387;
 }
 

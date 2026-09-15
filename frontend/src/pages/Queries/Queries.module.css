@@ -125,7 +125,7 @@
 .queryText {
     font-family: var(--font-body);
     font-size: 0.9375rem;
-    color: var(--color-text);
+    color: var(--color-text-2);
     background-color: rgba(208, 179, 135, 0.15);
     border: 1px solid rgba(208, 179, 135, 0.3);
     border-radius: 0.25rem;
