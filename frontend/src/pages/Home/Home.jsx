@@ -44,15 +44,6 @@ function Home() {
                     .select('title, category')
                     .range(0, 999);
 
-                // const { data, count, error } = await supabase
-                //     .from('books')
-                //     .select('title, category', { count: 'exact' })
-                //     .range(0, 999);
-
-                // console.log('count:', count);
-                // console.log('data length:', data?.length);
-                // console.log('error:', error);
-
                 if (data && data.length > 0) {
                     setTitles(data.map((b) => b.title));
                     const uniqueCats = [

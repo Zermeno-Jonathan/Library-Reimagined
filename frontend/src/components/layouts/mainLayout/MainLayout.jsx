@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import Header from '../../header/Header';
-import NavBar from '../../navbar/NavBar'; // nota: NavBar con mayúsculas
+import NavBar from '../../navbar/NavBar';
 import Footer from '../../footer/Footer';
 import styles from './MainLayout.module.css';
 

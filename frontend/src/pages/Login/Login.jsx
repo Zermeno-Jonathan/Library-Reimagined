@@ -45,8 +45,6 @@ function Login() {
             return;
         }
 
-        // AuthContext detecta el cambio de sesión automáticamente
-        // ya no necesitamos fetchear el rol ni guardarlo en localStorage
         navigate('/');
     };
 
