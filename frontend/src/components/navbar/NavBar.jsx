@@ -55,7 +55,7 @@ function NavBar() {
                 {userRole === 'user' && (
                     <li>
                         <Link to="/menuuser" onClick={closeMenu}>
-                            Menu User
+                            User Menu
                         </Link>
                     </li>
                 )}
@@ -63,7 +63,7 @@ function NavBar() {
                 {userRole === 'admin' && (
                     <li>
                         <Link to="/menuadmin" onClick={closeMenu}>
-                            Menu Admin
+                            Admin Menu
                         </Link>
                     </li>
                 )}
