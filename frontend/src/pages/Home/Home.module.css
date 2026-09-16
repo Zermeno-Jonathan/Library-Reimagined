@@ -138,14 +138,14 @@
     display: flex;
     gap: 2rem;
     width: max-content;
-    animation: scrollForward 65s linear infinite;
+    animation: scrollForward 1000s linear infinite;
 }
 
 .carouselTrackReverse {
     display: flex;
     gap: 2rem;
     width: max-content;
-    animation: scrollReverse 15s linear infinite;
+    animation: scrollReverse 100s linear infinite;
 }
 
 @keyframes scrollForward {

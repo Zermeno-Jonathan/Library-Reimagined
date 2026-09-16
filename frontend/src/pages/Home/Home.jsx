@@ -33,12 +33,27 @@ function Home() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const { data, count } = await supabase
+                const { count } = await supabase
                     .from('books')
-                    .select('title, category', { count: 'exact' });
+                    .select('*', { count: 'exact', head: true });
+
+                setTotalBooks(count || 0);
+
+                const { data } = await supabase
+                    .from('books')
+                    .select('title, category')
+                    .range(0, 999);
+
+                // const { data, count, error } = await supabase
+                //     .from('books')
+                //     .select('title, category', { count: 'exact' })
+                //     .range(0, 999);
+
+                // console.log('count:', count);
+                // console.log('data length:', data?.length);
+                // console.log('error:', error);
 
                 if (data && data.length > 0) {
-                    setTotalBooks(count || 0);
                     setTitles(data.map((b) => b.title));
                     const uniqueCats = [
                         ...new Set(data.map((b) => b.category).filter(Boolean)),
